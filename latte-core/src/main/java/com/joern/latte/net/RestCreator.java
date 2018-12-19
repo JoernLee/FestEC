@@ -1,12 +1,13 @@
 package com.joern.latte.net;
 
-import com.joern.latte.app.ConfigType;
+import com.joern.latte.app.ConfigKeys;
 import com.joern.latte.app.Latte;
 
-import java.util.TimerTask;
+import java.util.ArrayList;
 import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
@@ -33,7 +34,7 @@ public class RestCreator {
 
     private static final class RetrofitHolder {
         //通过工具类获取我们配置的APIHOST
-        private static final String BASE_URL = (String) Latte.getConfigurations().get(ConfigType.API_HOST.name());
+        private static final String BASE_URL = (String) Latte.getConfigurations().get(ConfigKeys.API_HOST.name());
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(OKHttpHolder.OK_HTTP_CLIENT)
@@ -44,7 +45,19 @@ public class RestCreator {
     //这里的建造者模式我们也可以添加我们自己的拦截器
     private static final class OKHttpHolder {
         private static final int TIME_OUT = 60;
-        private static final OkHttpClient OK_HTTP_CLIENT = new OkHttpClient.Builder()
+        private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
+        private static final ArrayList<Interceptor> INTERCEPTORS = Latte.getConfiguration(ConfigKeys.INTERCEPTOR);
+
+        private static OkHttpClient.Builder addInterceptors(){
+            if (INTERCEPTORS!=null&&!INTERCEPTORS.isEmpty()){
+                for (Interceptor interceptor:INTERCEPTORS){
+                    BUILDER.addInterceptor(interceptor);
+                }
+            }
+            return BUILDER;
+        }
+
+        private static final OkHttpClient OK_HTTP_CLIENT = addInterceptors()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .build();
     }
