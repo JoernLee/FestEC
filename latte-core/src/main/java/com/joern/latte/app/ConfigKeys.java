@@ -10,9 +10,10 @@ package com.joern.latte.app;
  * CONFIG_READY:控制配置或者初始化完成了没有
  * ICON:我们自己的一些配置
  */
-public enum ConfigType {
+public enum ConfigKeys {
     API_HOST,
     APPLICATION_CONTEXT,
     CONFIG_READY,
-    ICON
+    ICON,
+    INTERCEPTOR
 }
