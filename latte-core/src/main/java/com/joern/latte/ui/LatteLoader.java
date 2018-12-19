@@ -1,14 +1,13 @@
 package com.joern.latte.ui;
 
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDialog;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.joern.latte.R;
-import com.joern.latte.util.DimenUtil;
+import com.joern.latte.util.dimen.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
