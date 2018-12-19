@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.joern.latte.R;
 import com.joern.latte.util.DimenUtil;
 import com.wang.avi.AVLoadingIndicatorView;
 
@@ -31,7 +32,7 @@ public class LatteLoader {
     }
 
     public static void showLoading(Context context,String type){
-        final AppCompatDialog dialog = new AppCompatDialog(context);
+        final AppCompatDialog dialog = new AppCompatDialog(context, R.style.dialog);
 
         final AVLoadingIndicatorView avLoadingIndicatorView = LoaderCreator.create(type,context);
         dialog.setContentView(avLoadingIndicatorView);
