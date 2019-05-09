@@ -13,18 +13,16 @@ import okhttp3.Interceptor;
  */
 
 /**
- * 此类是用于配置的
+ * 此类是用于配置的---配置器
  * 此类应该是单例模式！---可以使用枚举，双重校验锁或者静态内部类来实现
  */
 public class Configurator {
 
     private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
-
+    //用来管理需要的ICON库的字体
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
-
-
 
 
     private Configurator() {
@@ -45,6 +43,7 @@ public class Configurator {
     }
 
     public final void configure() {
+        //执行字体库的初始化方法
         initIcons();
         LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY.name(), true);
     }
@@ -68,15 +67,15 @@ public class Configurator {
         return this;
     }
 
-    public final Configurator withInterceptor(Interceptor interceptor){
+    public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
-        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR,INTERCEPTORS);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 
-    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors){
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
         INTERCEPTORS.addAll(interceptors);
-        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR,INTERCEPTORS);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 

@@ -6,7 +6,7 @@ import com.joanzapata.iconify.Icon;
  * Created by Joern on 2018/12/03.
  */
 
-public enum EcIcons implements Icon{
+public enum EcIcons implements Icon {
     icon_scan('\ue64b'),
     icon_ali_pay('\ue604');
 

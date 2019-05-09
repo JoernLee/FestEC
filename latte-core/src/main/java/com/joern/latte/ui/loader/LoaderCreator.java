@@ -1,4 +1,4 @@
-package com.joern.latte.ui;
+package com.joern.latte.ui.loader;
 
 import android.content.Context;
 
@@ -9,6 +9,7 @@ import java.util.WeakHashMap;
 
 /**
  * Created by Joern on 2018/12/11.
+ * 用于生成指定的加载图标类
  */
 
 public final class LoaderCreator {
@@ -30,7 +31,7 @@ public final class LoaderCreator {
             return null;
         }
         final StringBuilder drawableClassName = new StringBuilder();
-        //不包含"."--所以应该是一个类
+        //不包含"."--所以应该是一个类-需要添加地址
         if (!name.contains(".")){
             final String defaultPackageName = AVLoadingIndicatorView.class.getPackage().getName();
             drawableClassName.append(defaultPackageName)

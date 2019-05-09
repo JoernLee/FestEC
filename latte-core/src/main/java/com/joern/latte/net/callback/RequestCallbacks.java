@@ -2,8 +2,8 @@ package com.joern.latte.net.callback;
 
 import android.os.Handler;
 
-import com.joern.latte.ui.LatteLoader;
-import com.joern.latte.ui.LoaderStyle;
+import com.joern.latte.ui.loader.LatteLoader;
+import com.joern.latte.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;

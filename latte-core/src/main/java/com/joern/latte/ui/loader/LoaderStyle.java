@@ -1,7 +1,8 @@
-package com.joern.latte.ui;
+package com.joern.latte.ui.loader;
 
 /**
  * Created by Joern on 2018/12/11.
+ * 枚举类方便用户选择加载框样式
  */
 @SuppressWarnings("unused")
 public enum  LoaderStyle {

@@ -8,8 +8,8 @@ import com.joern.latte.net.callback.IRequest;
 import com.joern.latte.net.callback.ISuccess;
 import com.joern.latte.net.callback.RequestCallbacks;
 import com.joern.latte.net.download.DownloadHandler;
-import com.joern.latte.ui.LatteLoader;
-import com.joern.latte.ui.LoaderStyle;
+import com.joern.latte.ui.loader.LatteLoader;
+import com.joern.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
@@ -106,7 +106,7 @@ public class RestClient {
                         RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()), FILE);
                 final MultipartBody.Part part =
                         MultipartBody.Part.createFormData("file", FILE.getName(),body);
-                call = RestCreator.getRestService().upload(URL,part);
+                call = service.upload(URL, part);
                 break;
             default:
                 break;
@@ -156,6 +156,10 @@ public class RestClient {
 
     public final void delete() {
         request(HttpMethod.DELETE);
+    }
+
+    public final void upload() {
+        request(HttpMethod.UPLOAD);
     }
 
     public final void download(){

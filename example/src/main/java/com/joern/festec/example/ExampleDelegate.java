@@ -2,6 +2,7 @@ package com.joern.festec.example;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,13 +29,14 @@ public class ExampleDelegate extends LatteDelegate {
 
     private void testRestClient(){
         RestClient.builder()
-                .url("https://www.baidu.com/")
+                .url("https://127.0.0.1/index")
                 .loader(getContext())
                 //.params("","")
                 .success(new ISuccess() {
                     @Override
                     public void onSuccess(String response) {
-                        //Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
+                        Log.d("HAHA",response);
+                        Toast.makeText(getContext(),response,Toast.LENGTH_SHORT).show();
                     }
                 })
                 .failure(new IFailure() {

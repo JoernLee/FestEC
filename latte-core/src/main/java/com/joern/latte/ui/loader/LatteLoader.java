@@ -1,4 +1,4 @@
-package com.joern.latte.ui;
+package com.joern.latte.ui.loader;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;
@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 /**
  * Created by Joern on 2018/12/11.
+ * 对外提供show加载框的工具类
  */
 
 public class LatteLoader {

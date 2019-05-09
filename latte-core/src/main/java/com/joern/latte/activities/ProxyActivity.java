@@ -12,6 +12,7 @@ import com.joern.latte.delegates.LatteDelegate;
  * Created by Joern on 2018/12/06.
  */
 
+//Activity的基类
 public abstract class ProxyActivity extends SupportActivity {
 
     public abstract LatteDelegate setRootDelegate();
@@ -27,7 +28,7 @@ public abstract class ProxyActivity extends SupportActivity {
         //该Id对应着RootFragment的容器Layout
         container.setId(R.id.delegate_container);
         setContentView(container);
-        //第一次创建Activity的执行，加载Fragment（这个是Fragmentation库特有的）
+        //第一次创建Activity时执行，加载Fragment（这个是Fragmentation库特有的）
         if (savedInstanceState == null ){
             loadRootFragment(R.id.delegate_container,setRootDelegate());
         }

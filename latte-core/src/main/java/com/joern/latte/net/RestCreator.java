@@ -14,6 +14,7 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Created by Joern on 2018/12/09.
+ * 利用Retrofit创建的服务，对外提供配置参数以及Rest服务(自己定义的服务接口)！
  */
 
 public class RestCreator {
@@ -35,6 +36,7 @@ public class RestCreator {
     private static final class RetrofitHolder {
         //通过工具类获取我们配置的APIHOST
         private static final String BASE_URL = (String) Latte.getConfigurations().get(ConfigKeys.API_HOST.name());
+        //这里可以借助建造者进行一些自定义操作，比如添加拦截器,最后生成Retrofit
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(OKHttpHolder.OK_HTTP_CLIENT)
@@ -48,6 +50,7 @@ public class RestCreator {
         private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
         private static final ArrayList<Interceptor> INTERCEPTORS = Latte.getConfiguration(ConfigKeys.INTERCEPTOR);
 
+        //把全局配置项里面的拦截器利用建造者模式添加进去
         private static OkHttpClient.Builder addInterceptors(){
             if (INTERCEPTORS!=null&&!INTERCEPTORS.isEmpty()){
                 for (Interceptor interceptor:INTERCEPTORS){
@@ -56,7 +59,7 @@ public class RestCreator {
             }
             return BUILDER;
         }
-
+        //生成配置后的OKHttpClient
         private static final OkHttpClient OK_HTTP_CLIENT = addInterceptors()
                 .connectTimeout(TIME_OUT, TimeUnit.SECONDS)
                 .build();

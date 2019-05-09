@@ -6,7 +6,7 @@ import com.joern.latte.net.callback.IError;
 import com.joern.latte.net.callback.IFailure;
 import com.joern.latte.net.callback.IRequest;
 import com.joern.latte.net.callback.ISuccess;
-import com.joern.latte.ui.LoaderStyle;
+import com.joern.latte.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
@@ -129,7 +129,8 @@ public class RestClientBuilder {
     }
 
     public final RestClient build() {
-        return new RestClient(mUrl, PARAMS, mDownloadDir, mExtension, mName, mIRequest, mISuccess, mIFailure, mIError, mBody, mFile, mContext, mLoaderStyle);
+        return new RestClient(mUrl, PARAMS, mDownloadDir, mExtension, mName,
+                mIRequest, mISuccess, mIFailure, mIError, mBody, mFile, mContext, mLoaderStyle);
     }
 
 
